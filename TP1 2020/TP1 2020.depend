@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1599854912 source:d:\leandro\utnfra\programacion i laboratorio i\tp1 2020\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1599855028 d:\leandro\utnfra\programacion i laboratorio i\tp1 2020\funciones.h
+	"funciones.c"
+
+1599768863 d:\leandro\utnfra\programacion i laboratorio i\tp1 2020\funciones.c
+
+1599768863 source:d:\leandro\utnfra\programacion i laboratorio i\tp1 2020\funciones.c
+
