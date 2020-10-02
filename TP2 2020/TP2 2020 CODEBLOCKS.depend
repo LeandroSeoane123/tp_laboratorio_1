@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1601651771 source:d:\leandro\utnfra\programacion i laboratorio i\tp2 2020 codeblocks\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"empleado.h"
+	"validaciones.h"
+
+1601652162 source:d:\leandro\utnfra\programacion i laboratorio i\tp2 2020 codeblocks\main.c
+	<stdio.h>
+	<stdlib.h>
+	"empleado.h"
+	"validaciones.h"
+
+1601652467 d:\leandro\utnfra\programacion i laboratorio i\tp2 2020 codeblocks\empleado.h
+
+1601217226 d:\leandro\utnfra\programacion i laboratorio i\tp2 2020 codeblocks\empleado.c
+	"empleado.h"
+
+1601646917 source:d:\leandro\utnfra\programacion i laboratorio i\tp2 2020 codeblocks\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"validaciones.h"
+	"empleado.h"
+
+1601646611 d:\leandro\utnfra\programacion i laboratorio i\tp2 2020 codeblocks\validaciones.h
+
