@@ -112,17 +112,30 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
     Employee* pEmpleado;
     int retorno = 0;
-    char* pIdStr=NULL;
+    int id;
+    char* idStr=NULL;
     char* pNombreStr=NULL;
     char* pHorasTrabajadasStr=NULL;
     char* pSueldoStr=NULL;
-    int len;
     int retornoAddList;
 
-    pIdStr = (char*)malloc(sizeof(char*)*20);
+    FILE* pFile;
+
+    pFile = fopen("data.csv", "r");
+
+    idStr = (char*)malloc(sizeof(char*)*20);
     pNombreStr = (char*)malloc(sizeof(char*)*128);
     pHorasTrabajadasStr = (char*)malloc(sizeof(char*)*20);
     pSueldoStr = (char*)malloc(sizeof(char*)*20);
+
+    if(pFile != NULL)
+    {
+        parser_LastIdFromText(pFile, pArrayListEmployee, idStr);
+    }
+
+    id = atoi(idStr);
+    id = id+1;
+    sprintf(idStr,"%d",id);
 
     printf("\nIngrese el nombre del empleado: ");
     fflush(stdin);
@@ -136,11 +149,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     fflush(stdin);
     gets(pSueldoStr);
 
-    len = ll_len(pArrayListEmployee);
-    len = len+1;
-    sprintf(pIdStr, "%d", len);
-
-    pEmpleado = employee_newParametros(pIdStr, pNombreStr, pHorasTrabajadasStr, pSueldoStr);
+    pEmpleado = employee_newParametros(idStr, pNombreStr, pHorasTrabajadasStr, pSueldoStr);
 
     if(pEmpleado != NULL)
     {
@@ -157,7 +166,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
         retorno = -1;
     }
 
-    free(pIdStr);
+    free(idStr);
     free(pNombreStr);
     free(pHorasTrabajadasStr);
     free(pSueldoStr);
@@ -323,6 +332,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
                 len = ll_len(pArrayListEmployee);
                 printf("\n***** EMPLEADO BORRADO CON EXITO *****\n");
                 retorno = 1;
+                break;
             }
             else
             {

@@ -67,3 +67,29 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 
     return retorno;
 }
+
+int parser_LastIdFromText (FILE* pFile, LinkedList* pArrayListEmployee, char* id)
+{
+    int retorno=0;
+    char* nombre=NULL;
+    char* horas=NULL;
+    char* sueldo=NULL;
+
+    nombre = (char*)malloc(sizeof(char*)*128);
+    horas = (char*)malloc(sizeof(char*)*20);
+    sueldo = (char*)malloc(sizeof(char*)*20);
+
+    while(!feof(pFile))
+    {
+           fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", id, nombre, horas, sueldo);
+           printf("\n%s",id);
+    }
+
+    fclose(pFile);
+
+    free(nombre);
+    free(horas);
+    free(sueldo);
+
+    return retorno;
+}
