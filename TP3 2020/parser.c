@@ -24,6 +24,7 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
         if(pEmpleadoLocal != NULL)
         {
             ll_add(pArrayListEmployee, pEmpleadoLocal);
+            retorno = 1;
         }
     }
 
@@ -57,6 +58,7 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
             if(pEmpleadoLocal != NULL)
             {
                 ll_add(pArrayListEmployee, pEmpleadoLocal);
+                retorno=1;
             }
         }
     }
@@ -78,10 +80,15 @@ int parser_LoadLastIdFromText (char* id)
 
     pFile = fopen("data.csv", "r");
 
-    while(!feof(pFile))
+    if(pFile != NULL)
     {
-           fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", id, &nombre[0], &horas[0], &sueldo[0]);
+        while(!feof(pFile))
+        {
+            fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", id, &nombre[0], &horas[0], &sueldo[0]);
+        }
+        retorno=1;
     }
+
 
     fclose(pFile);
 
