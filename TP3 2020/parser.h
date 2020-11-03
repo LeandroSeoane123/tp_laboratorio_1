@@ -1,3 +1,3 @@
 int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee);
 int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee);
-int parser_LastIdFromText (FILE* pFile, LinkedList* pArrayListEmployee, char* id);
+int parser_LoadLastIdFromText (char* id);

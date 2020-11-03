@@ -119,19 +119,12 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     char* pSueldoStr=NULL;
     int retornoAddList;
 
-    FILE* pFile;
-
-    pFile = fopen("data.csv", "r");
-
     idStr = (char*)malloc(sizeof(char*)*20);
     pNombreStr = (char*)malloc(sizeof(char*)*128);
     pHorasTrabajadasStr = (char*)malloc(sizeof(char*)*20);
     pSueldoStr = (char*)malloc(sizeof(char*)*20);
 
-    if(pFile != NULL)
-    {
-        parser_LastIdFromText(pFile, pArrayListEmployee, idStr);
-    }
+    parser_LoadLastIdFromText(idStr);
 
     id = atoi(idStr);
     id = id+1;
