@@ -7,15 +7,10 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 {
     int retorno=0;
     Employee* pEmpleadoLocal;
-    char* id=NULL;
-    char* nombre=NULL;
-    char* horas=NULL;
-    char* sueldo=NULL;
-
-    id = (char*)malloc(sizeof(char*)*20);
-    nombre = (char*)malloc(sizeof(char*)*128);
-    horas = (char*)malloc(sizeof(char*)*20);
-    sueldo = (char*)malloc(sizeof(char*)*20);
+    char id[20];
+    char nombre[128];
+    char horas[20];
+    char sueldo[20];
 
     while(!feof(pFile))
     {
@@ -29,13 +24,6 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
     }
 
     fclose(pFile);
-
-    printf("\n***** DATOS IMPORTADOS CORRECTAMENTE. *****\n");
-
-    free(id);
-    free(nombre);
-    free(horas);
-    free(sueldo);
 
     return retorno;
 }
@@ -63,32 +51,23 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
         }
     }
 
-    printf("\n***** DATOS IMPORTADOS CORRECTAMENTE. *****\n");
-
     fclose(pFile);
 
     return retorno;
 }
 
-int parser_LoadLastIdFromText (char* id)
+int parser_LoadLastIdFromText (char* path, char* id)
 {
     int retorno=0;
-    char nombre[128];
-    char horas[20];
-    char sueldo[20];
     FILE* pFile;
 
-    pFile = fopen("data.csv", "r");
+    pFile = fopen(path, "r");
 
     if(pFile != NULL)
     {
-        while(!feof(pFile))
-        {
-            fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", id, &nombre[0], &horas[0], &sueldo[0]);
-        }
+        fscanf(pFile, "%s", id);
         retorno=1;
     }
-
 
     fclose(pFile);
 

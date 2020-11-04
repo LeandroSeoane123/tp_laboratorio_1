@@ -157,11 +157,8 @@ int employee_getSueldo(Employee* this,int* sueldo)
 int employee_CompareByName(void* e1, void* e2)
 {
     int retorno=0;
-    char* nombre1;
-    char* nombre2;
-
-    nombre1=(char*)malloc(sizeof(char*)*128);
-    nombre2=(char*)malloc(sizeof(char*)*128);
+    char nombre1[128];
+    char nombre2[128];
 
     Employee* auxE1 = (Employee*) e1;
     Employee* auxE2 = (Employee*) e2;
@@ -181,9 +178,6 @@ int employee_CompareByName(void* e1, void* e2)
         }
     }
 
-    free(nombre1);
-    free(nombre2);
-
     return retorno;
 }
 
@@ -191,32 +185,40 @@ int employee_CompareByName(void* e1, void* e2)
 int employee_CompareById(void* e1, void* e2)
 {
     int retorno=0;
-    int* id1;
-    int* id2;
-
-    id1=(int*)malloc(sizeof(int*));
-    id2=(int*)malloc(sizeof(int*));
+    int id1;
+    int id2;
 
     Employee* auxE1 = (Employee*) e1;
     Employee* auxE2 = (Employee*) e2;
 
-    employee_getId(auxE1,id1);
-    employee_getId(auxE2,id2);
+    employee_getId(auxE1,&id1);
+    employee_getId(auxE2,&id2);
 
-    if (*id1 > *id2)
+    if (id1 > id2)
     {
         retorno = 1;
     }
     else
     {
-        if(*id1 < *id2)
+        if(id1 < id2)
         {
             retorno = -1;
         }
     }
 
-    free(id1);
-    free(id2);
-
     return retorno;
+}
+
+void mostrarEmpleado(Employee* this)
+{
+    int id;
+    char nombre[128];
+    int horas;
+    int sueldo;
+
+    employee_getId(this, &id);
+    employee_getNombre(this, nombre);
+    employee_getHorasTrabajadas(this, &horas);
+    employee_getSueldo(this, &sueldo);
+    printf("\n%7d %10s %9d %10d\n", id, nombre, horas, sueldo);
 }

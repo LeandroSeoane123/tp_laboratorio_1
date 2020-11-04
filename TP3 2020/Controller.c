@@ -107,6 +107,24 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
     return retornoParser;
 }
 
+int controller_saveLastIdAsText(char* path, int id)
+{
+    FILE* pFile;
+    int retorno=0;
+
+    pFile = fopen(path, "w");
+
+    if(pFile != NULL)
+    {
+        fprintf(pFile,"%d", id);
+        retorno=1;
+    }
+
+    fclose(pFile);
+
+    return retorno;
+}
+
 
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
@@ -114,17 +132,14 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     int retorno = 0;
     int id;
     char* idStr=NULL;
-    char* pNombreStr=NULL;
-    char* pHorasTrabajadasStr=NULL;
-    char* pSueldoStr=NULL;
+    char NombreStr[128];
+    char HorasTrabajadasStr[20];
+    char SueldoStr[20];
     int retornoAddList;
 
     idStr = (char*)malloc(sizeof(char*)*20);
-    pNombreStr = (char*)malloc(sizeof(char*)*128);
-    pHorasTrabajadasStr = (char*)malloc(sizeof(char*)*20);
-    pSueldoStr = (char*)malloc(sizeof(char*)*20);
 
-    parser_LoadLastIdFromText(idStr);
+    parser_LoadLastIdFromText("config.csv",idStr);
 
     id = atoi(idStr);
     id = id+1;
@@ -132,17 +147,17 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 
     printf("\nIngrese el nombre del empleado: ");
     fflush(stdin);
-    gets(pNombreStr);
+    gets(NombreStr);
 
     printf("\nIngrese las horas trabajadas del empleado: ");
     fflush(stdin);
-    gets(pHorasTrabajadasStr);
+    gets(HorasTrabajadasStr);
 
     printf("\nIngrese el sueldo del empleado: ");
     fflush(stdin);
-    gets(pSueldoStr);
+    gets(SueldoStr);
 
-    pEmpleado = employee_newParametros(idStr, pNombreStr, pHorasTrabajadasStr, pSueldoStr);
+    pEmpleado = employee_newParametros(idStr, NombreStr, HorasTrabajadasStr, SueldoStr);
 
     if(pEmpleado != NULL)
     {
@@ -150,6 +165,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
         if(retornoAddList == 0)
         {
             printf("\n***** EL EMPLEADO FUE AGREGADO A LA LISTA SATISFACTORIAMENTE *****\n");
+            controller_saveLastIdAsText("config.csv", id);
             retorno = 1;
         }
     }
@@ -160,9 +176,6 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     }
 
     free(idStr);
-    free(pNombreStr);
-    free(pHorasTrabajadasStr);
-    free(pSueldoStr);
 
     return retorno;
 }
@@ -172,16 +185,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     int retorno = 0;
     int len;
     int i;
-    int* id;
-    char* nombre;
-    int* horas;
-    int* sueldo;
     Employee* auxE;
-
-    id=(int*)malloc(sizeof(int*));
-    nombre=(char*)malloc(sizeof(char*)*128);
-    horas=(int*)malloc(sizeof(int*));
-    sueldo=(int*)malloc(sizeof(int*));
 
     len = ll_len(pArrayListEmployee);
 
@@ -196,39 +200,27 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
         for(i=0; i < len; i++)
         {
             auxE = ll_get(pArrayListEmployee, i);
-            employee_getId(auxE, id);
-            employee_getNombre(auxE, nombre);
-            employee_getHorasTrabajadas(auxE, horas);
-            employee_getSueldo(auxE, sueldo);
-            printf("\n%7d %10s %9d %10d\n", *id, nombre, *horas, *sueldo);
+            mostrarEmpleado(auxE);
             retorno = 1;
         }
     }
-
-    free(id);
-    free(nombre);
-    free(horas);
-    free(sueldo);
-
     return retorno;
 }
 
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
     int retorno = 0;
-    int* id;
+    int id;
     int idAux;
     int i;
     int len;
-    char nombreAux[30];
+    char nombreAux[128];
     int horasTrabajadasAux;
     int sueldoAux;
     int retornoNombre;
     int retornoHoras;
     int retornoSueldo;
     Employee* auxE;
-
-    id=(int*)malloc(sizeof(int*));
 
     len = ll_len(pArrayListEmployee);
 
@@ -240,8 +232,8 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
         for(i=0; i<len; i++)
         {
             auxE = (Employee*)ll_get(pArrayListEmployee, i);
-            employee_getId(auxE, id);
-            if(auxE != NULL && *id == idAux)
+            employee_getId(auxE, &id);
+            if(auxE != NULL && id == idAux)
             {
                 printf("\nEmpleado encontrado.\n");
                 printf("\nIngrese el nombre de su nuevo empleado: ");
@@ -287,8 +279,6 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
         retorno = -1;
     }
 
-    free(id);
-
     return retorno;
 }
 
@@ -297,12 +287,10 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
     int retorno = 0;
     int idAux;
-    int* id;
+    int id;
     int i;
     int len;
     Employee* auxE;
-
-    id=(int*)malloc(sizeof(int*));
 
     len = ll_len(pArrayListEmployee);
 
@@ -318,8 +306,8 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
         for(i=0; i<len; i++)
         {
             auxE = (Employee*)ll_get(pArrayListEmployee, i);
-            employee_getId(auxE, id);
-            if(*id == idAux)
+            employee_getId(auxE, &id);
+            if(id == idAux)
             {
                 ll_pop(pArrayListEmployee, i);
                 len = ll_len(pArrayListEmployee);
@@ -339,8 +327,6 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
             retorno = -1;
         }
     }
-
-    free(id);
 
     return retorno;
 }
@@ -428,16 +414,11 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
     int retorno=0;
     int len;
     int i;
-    int* id;
-    char* nombre;
-    int* horas;
-    int* sueldo;
+    int id;
+    char nombre[128];
+    int horas;
+    int sueldo;
     Employee* pEmpleado;
-
-    id=(int*)malloc(sizeof(int*));
-    nombre=(char*)malloc(sizeof(char*)*128);
-    horas=(int*)malloc(sizeof(int*));
-    sueldo=(int*)malloc(sizeof(int*));
 
     pFile = fopen(path, "w");
 
@@ -450,11 +431,11 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
             for(i=0; i<len; i++)
             {
                 pEmpleado = ll_get(pArrayListEmployee, i);
-                employee_getId(pEmpleado, id);
+                employee_getId(pEmpleado, &id);
                 employee_getNombre(pEmpleado, nombre);
-                employee_getHorasTrabajadas(pEmpleado, horas);
-                employee_getSueldo(pEmpleado, sueldo);
-                fprintf(pFile, "%d,%s,%d,%d\n", *id, nombre, *horas, *sueldo);
+                employee_getHorasTrabajadas(pEmpleado, &horas);
+                employee_getSueldo(pEmpleado, &sueldo);
+                fprintf(pFile, "%d,%s,%d,%d\n", id, nombre, horas, sueldo);
                 retorno = 1;
             }
             printf("\n***** DATOS GUARDADOS CORRECTAMENTE. *****\n");
@@ -471,11 +452,6 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
     }
 
     fclose(pFile);
-
-    free(id);
-    free(nombre);
-    free(horas);
-    free(sueldo);
 
     return retorno;
 }

@@ -27,7 +27,6 @@ int main()
 {
     LinkedList* pMiLista;
     pMiLista = ll_newLinkedList();
-
     int opcionMenu;
     int validarSalir=0;
 
