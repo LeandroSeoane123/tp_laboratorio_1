@@ -3,7 +3,7 @@ int suma(int numero1, int numero2);
 int resta(int numero1, int numero2);
 float division(float numero1, float numero2);
 int multiplicacion(int numero1, int numero2);
-int factorizacion(int numero1);
+int factorizacion(int numero);
 void mostrarSuma(int respuestaSuma, int validacionSuma);
 void mostrarResta(int respuestaResta, int validacionResta);
 void mostrarDivision(float respuestaDivision, int validacionDivision);

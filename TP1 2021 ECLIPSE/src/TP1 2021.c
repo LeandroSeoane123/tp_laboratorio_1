@@ -90,7 +90,7 @@ int main()
             respuestaFactorialUno = factorizacion(numero1);
             validacionFactorialUno = 1;
             respuestaFactorialDos = factorizacion(numero2);
-            validacionFactorialDos = 2;
+            validacionFactorialDos = 1;
             printf("\n***************FACTORIALES CALCULADOS CON EXITO***************");
             break;
         case 8:
@@ -102,6 +102,11 @@ int main()
             printf ("\n***************GRACIAS POR USAR EL PROGRAMA, VUELVA PRONTO!***************\n");
             break;
 
+        }
+
+        if(opcion > 9 || opcion <= 0)
+        {
+        	printf("\n*****LA OPCION INGRESADA NO ES CORRECTA, INTENTE NUEVAMENTE*****");
         }
 
     }

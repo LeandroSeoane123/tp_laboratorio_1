@@ -47,16 +47,25 @@ int multiplicacion(int numero1, int numero2)
 }
 
 //LA FUNCION FACTORIZACION SE ENCARGARA DE CALCULAR EL FACTORIAL
-int factorizacion(int numero1)
+int factorizacion(int numero)
 {
     int factorialRetorno = 1;
     int i;
-    for(i = 1; i <= numero1; i++)
+
+    if(numero != 0)
     {
+    	for(i = 1; i <= numero; i++)
+    	    {
 
-        factorialRetorno = factorialRetorno * i;
+    	        factorialRetorno = factorialRetorno * i;
 
+    	    }
     }
+    else
+    {
+    	factorialRetorno = 0;
+    }
+
 
     return factorialRetorno;
 
