@@ -3,10 +3,10 @@
 #include "Calculadora.h"
 
 //LA FUNCION SUMA RECIBIRA LOS DOS NUMEROS INGRESADOS POR EL USUARIO Y LOS SUMARA
-int suma(int numero1, int numero2)
+float suma(float numero1, float numero2)
 {
 
-    int sumaRetorno;
+	float sumaRetorno;
     sumaRetorno = numero1 + numero2;
 
     return sumaRetorno;
@@ -14,10 +14,10 @@ int suma(int numero1, int numero2)
 }
 
 //LA FUNCION RESTA RECIBIRA LOS DOS NUMEROS INGRESADOS POR EL USUARIO Y LOS RESTARA
-int resta(int numero1, int numero2)
+float resta(float numero1, float numero2)
 {
 
-    int restaRetorno;
+	float restaRetorno;
     restaRetorno = numero1 - numero2;
 
     return restaRetorno;
@@ -36,10 +36,10 @@ float division(float numero1, float numero2)
 }
 
 //LA FUNCION MULTIPLICACION RECIBIRA LOS DOS NUMEROS INGRESADOS POR EL USUARIO Y LOS MULTIPLICARA
-int multiplicacion(int numero1, int numero2)
+float multiplicacion(float numero1, float numero2)
 {
 
-    int multiplicacionRetorno;
+	float multiplicacionRetorno;
     multiplicacionRetorno = numero1 * numero2;
 
     return multiplicacionRetorno;
@@ -47,25 +47,24 @@ int multiplicacion(int numero1, int numero2)
 }
 
 //LA FUNCION FACTORIZACION SE ENCARGARA DE CALCULAR EL FACTORIAL
-int factorizacion(int numero)
+int factorizacion(float numero)
 {
-    int factorialRetorno = 1;
+	int factorialRetorno = 1;
     int i;
 
-    if(numero != 0)
+    i = numero;
+
+    if(numero-i == 0)
     {
-    	for(i = 1; i <= numero; i++)
-    	    {
-
-    	        factorialRetorno = factorialRetorno * i;
-
-    	    }
+       for(i = 1; i <= numero; i++)
+       {
+         factorialRetorno = factorialRetorno * i;
+       }
     }
     else
     {
-    	factorialRetorno = 0;
+    	factorialRetorno = -1;
     }
-
 
     return factorialRetorno;
 
@@ -73,7 +72,7 @@ int factorizacion(int numero)
 
 
 //LA FUNCION MOSTRARRESULTADOS RECIBIRA LOS RESULTADOS DE TODAS LAS OPERACIONES MATEMATICAS Y LOS MOSTRARA TODOS LLAMANDO A CADA FUNCION PERZONALIDA PARA  CADA RESULTADO
-void mostrarResultados(int respuestaSuma, int validacionSuma, int respuestaResta, int validacionResta, float respuestaDivision, int validacionDivision, int respuestaMultiplicacion, int validacionMultiplicacion, int respuestaFactorialUno, int validacionFactorialUno, int respuestaFactorialDos, int validacionFactorialDos)
+void mostrarResultados(float respuestaSuma, int validacionSuma, float respuestaResta, int validacionResta, float respuestaDivision, int validacionDivision, float respuestaMultiplicacion, int validacionMultiplicacion, int respuestaFactorialUno, int validacionFactorialUno, int respuestaFactorialDos, int validacionFactorialDos)
 {
 
 	mostrarSuma(respuestaSuma, validacionSuma);
@@ -85,11 +84,11 @@ void mostrarResultados(int respuestaSuma, int validacionSuma, int respuestaResta
 }
 
 //LA FUNCION MOSTRARA EL RESULTADO DE LA SUMA O INFORMARA QUE LA SUMA FALLO O NO SE REALIZO DEPENDIENDO DEL CASO
-void mostrarSuma(int respuestaSuma, int validacionSuma)
+void mostrarSuma(float respuestaSuma, int validacionSuma)
 {
 	if(validacionSuma == 1)
 	{
-		printf ("\nSUMA DE LOS OPERANDOS: %d", respuestaSuma);
+		printf ("\nSUMA DE LOS OPERANDOS: %.2f", respuestaSuma);
 	}
 	else
 	{
@@ -99,11 +98,11 @@ void mostrarSuma(int respuestaSuma, int validacionSuma)
 }
 
 //LA FUNCION MOSTRARA EL RESULTADO DE LA RESTA O INFORMARA QUE LA RESTA FALLO O NO SE REALIZO DEPENDIENDO DEL CASO
-void mostrarResta(int respuestaResta, int validacionResta)
+void mostrarResta(float respuestaResta, int validacionResta)
 {
 	if(validacionResta == 1)
 	{
-		printf("\nRESTA DE LOS OPERANDOS: %d", respuestaResta);
+		printf("\nRESTA DE LOS OPERANDOS: %.2f", respuestaResta);
 	}
 	else
 	{
@@ -117,7 +116,7 @@ void mostrarDivision(float respuestaDivision, int validacionDivision)
 {
 	if(validacionDivision == 1)
 	{
-		printf("\nDIVISION DE LOS OPERANDOS: %f", respuestaDivision);
+		printf("\nDIVISION DE LOS OPERANDOS: %.2f", respuestaDivision);
 	}
 	else
 	{
@@ -127,11 +126,11 @@ void mostrarDivision(float respuestaDivision, int validacionDivision)
 }
 
 //LA FUNCION MOSTRARA EL RESULTADO DE LA MULTIPLICACION O INFORMARA QUE LA MULTIPLICACION FALLO O NO SE REALIZO DEPENDIENDO DEL CASO
-void mostrarMultiplicacion(int respuestaMultiplicacion, int validacionMultiplicacion)
+void mostrarMultiplicacion(float respuestaMultiplicacion, int validacionMultiplicacion)
 {
 	if(validacionMultiplicacion == 1)
 	{
-		printf("\nMULTIPLICACION DE LOS OPERANDOS: %d", respuestaMultiplicacion);
+		printf("\nMULTIPLICACION DE LOS OPERANDOS: %.2f", respuestaMultiplicacion);
 	}
 	else
 	{
