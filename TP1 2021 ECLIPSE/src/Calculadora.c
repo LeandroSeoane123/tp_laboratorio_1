@@ -90,7 +90,6 @@ void mostrarSuma(float respuestaSuma, int validacionSuma)
 
 }
 
-//LA FUNCION MOSTRARA EL RESULTADO DE LA RESTA O INFORMARA QUE LA RESTA FALLO O NO SE REALIZO DEPENDIENDO DEL CASO
 void mostrarResta(float respuestaResta, int validacionResta)
 {
 	if(validacionResta == 1)
@@ -104,7 +103,6 @@ void mostrarResta(float respuestaResta, int validacionResta)
 
 }
 
-//LA FUNCION MOSTRARA EL RESULTADO DE LA DIVISION O INFORMARA QUE LA DIVISION FALLO O NO SE REALIZO DEPENDIENDO DEL CASO
 void mostrarDivision(float respuestaDivision, int validacionDivision)
 {
 	if(validacionDivision == 1)
@@ -118,7 +116,6 @@ void mostrarDivision(float respuestaDivision, int validacionDivision)
 
 }
 
-//LA FUNCION MOSTRARA EL RESULTADO DE LA MULTIPLICACION O INFORMARA QUE LA MULTIPLICACION FALLO O NO SE REALIZO DEPENDIENDO DEL CASO
 void mostrarMultiplicacion(float respuestaMultiplicacion, int validacionMultiplicacion)
 {
 	if(validacionMultiplicacion == 1)
@@ -131,7 +128,6 @@ void mostrarMultiplicacion(float respuestaMultiplicacion, int validacionMultipli
 	}
 }
 
-//LA FUNCION MOSTRARA EL RESULTADO DE LA FACTORIZACION O INFORMARA QUE LA FACTORIZACION FALLO O NO SE REALIZO DEPENDIENDO DEL CASO
 void mostrarFactorialUno(int respuestaFactorialUno, int validacionFactorialUno)
 {
 	if(validacionFactorialUno == 1)
@@ -144,7 +140,6 @@ void mostrarFactorialUno(int respuestaFactorialUno, int validacionFactorialUno)
 		}
 }
 
-//LA FUNCION MOSTRARA EL RESULTADO DE LA FACTORIZACION O INFORMARA QUE LA FACTORIZACION FALLO O NO SE REALIZO DEPENDIENDO DEL CASO
 void mostrarFactorialDos(int respuestaFactorialDos, int validacionFactorialDos)
 {
 	if(validacionFactorialDos == 1)
