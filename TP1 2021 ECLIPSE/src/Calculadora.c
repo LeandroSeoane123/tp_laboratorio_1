@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "Calculadora.h"
 
-//LA FUNCION SUMA RECIBIRA LOS DOS NUMEROS INGRESADOS POR EL USUARIO Y LOS SUMARA
+
 float suma(float numero1, float numero2)
 {
 
@@ -13,7 +13,6 @@ float suma(float numero1, float numero2)
 
 }
 
-//LA FUNCION RESTA RECIBIRA LOS DOS NUMEROS INGRESADOS POR EL USUARIO Y LOS RESTARA
 float resta(float numero1, float numero2)
 {
 
@@ -24,7 +23,6 @@ float resta(float numero1, float numero2)
 
 }
 
-//LA FUNCION DIVISION RECIBIRA LOS DOS NUMEROS INGRESADOS POR EL USUARIO Y LOS DIVIDIRA
 float division(float numero1, float numero2)
 {
     float divisionRetorno;
@@ -35,7 +33,6 @@ float division(float numero1, float numero2)
 
 }
 
-//LA FUNCION MULTIPLICACION RECIBIRA LOS DOS NUMEROS INGRESADOS POR EL USUARIO Y LOS MULTIPLICARA
 float multiplicacion(float numero1, float numero2)
 {
 
@@ -46,7 +43,6 @@ float multiplicacion(float numero1, float numero2)
 
 }
 
-//LA FUNCION FACTORIZACION SE ENCARGARA DE CALCULAR EL FACTORIAL
 int factorizacion(float numero)
 {
 	int factorialRetorno = 1;
@@ -70,8 +66,6 @@ int factorizacion(float numero)
 
 }
 
-
-//LA FUNCION MOSTRARRESULTADOS RECIBIRA LOS RESULTADOS DE TODAS LAS OPERACIONES MATEMATICAS Y LOS MOSTRARA TODOS LLAMANDO A CADA FUNCION PERZONALIDA PARA  CADA RESULTADO
 void mostrarResultados(float respuestaSuma, int validacionSuma, float respuestaResta, int validacionResta, float respuestaDivision, int validacionDivision, float respuestaMultiplicacion, int validacionMultiplicacion, int respuestaFactorialUno, int validacionFactorialUno, int respuestaFactorialDos, int validacionFactorialDos)
 {
 
@@ -83,7 +77,6 @@ void mostrarResultados(float respuestaSuma, int validacionSuma, float respuestaR
 	mostrarFactorialUno(respuestaFactorialDos, validacionFactorialDos);
 }
 
-//LA FUNCION MOSTRARA EL RESULTADO DE LA SUMA O INFORMARA QUE LA SUMA FALLO O NO SE REALIZO DEPENDIENDO DEL CASO
 void mostrarSuma(float respuestaSuma, int validacionSuma)
 {
 	if(validacionSuma == 1)
