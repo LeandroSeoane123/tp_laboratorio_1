@@ -70,7 +70,7 @@ int main()
             printf("\n***************NUMEROS RESTADOS CON EXITO***************");
             break;
         case 5:
-            if(numero1 == 0 || numero2 == 0)
+            if(numero2 == 0)
             {
             	printf("\n***************DIVISION FALLIDA, NO SE PUEDE DIVIDIR POR 0***************");
             }
