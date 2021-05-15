@@ -93,14 +93,14 @@ int modificarEmpleado(eEmpleado arrayEmpleado[], int tam)
         getInt("\nIngrese el ID del empleado que quiere modificar: ", &id);
         pos = buscarEmpleadoPorID(arrayEmpleado, tam, id);
 
-        id = arrayEmpleado[pos].id;
-        strcpy(nombre, arrayEmpleado[pos].nombre);
-        strcpy(apellido, arrayEmpleado[pos].apellido);
-        salario = arrayEmpleado[pos].salario;
-        sector = arrayEmpleado[pos].sector;
-
         if(pos != -1)
         {
+        	id = arrayEmpleado[pos].id;
+        	strcpy(nombre, arrayEmpleado[pos].nombre);
+        	strcpy(apellido, arrayEmpleado[pos].apellido);
+        	salario = arrayEmpleado[pos].salario;
+        	sector = arrayEmpleado[pos].sector;
+
             puts("\nEMPLEADO ENCONTRADO.");
             puts("\nID -------- NOMBRE -------- APELLIDO -------- SALARIO -------- SECTOR");
             mostrarUnEmpleado(arrayEmpleado, pos);
