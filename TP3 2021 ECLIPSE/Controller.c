@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "LinkedList.h"
 #include "Employee.h"
 #include "parser.h"
@@ -145,6 +146,8 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     sprintf(idStr,"%d",id);
 
     getString("\nIngrese el nombre del empleado: ", NombreStr);
+    strlwr(NombreStr);
+    NombreStr[0] = toupper(NombreStr[0]);
     getString("\nIngrese las horas trabajadas del empleado: ", HorasTrabajadasStr);
     getString("\nIngrese el sueldo del empleado: ", SueldoStr);
 
@@ -225,6 +228,8 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
             {
                 printf("\nEmpleado encontrado.\n");
                 getString("\nIngrese el nombre de su nuevo empleado: ", nombreAux);
+                strlwr(nombreAux);
+                nombreAux[0] = toupper(nombreAux[0]);
                 retornoNombre = employee_setNombre(auxE, nombreAux);
                 if(retornoNombre == 1)
                 {
