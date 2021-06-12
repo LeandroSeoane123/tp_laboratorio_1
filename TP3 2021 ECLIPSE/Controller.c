@@ -326,69 +326,105 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
     int retornoSort;
     int opcionMenu;
     int opcionMenu2;
+    int len;
 
-    getInt("\nDefina el criterio con el que quiere ordenar, 1 para ordenar por ID y 2 para ordenar por nombre: ", &opcionMenu);
-    while(opcionMenu != 1 && opcionMenu != 2)
+    len = ll_len(pArrayListEmployee);
+
+
+    if(len>1)
     {
-        getInt("\nERROR: La opcion ingresada no es correcta, ingrese 1 para ordenar por ID y 2 para ordenar por nombre: ", &opcionMenu);
+    	getInt("\nDefina el criterio con el que quiere ordenar, 1 para ordenar por ID y 2 para ordenar por nombre: ", &opcionMenu);
+    	    while(opcionMenu != 1 && opcionMenu != 2)
+    	    {
+    	        getInt("\nERROR: La opcion ingresada no es correcta, ingrese 1 para ordenar por ID y 2 para ordenar por nombre: ", &opcionMenu);
+    	    }
+
+    	    switch(opcionMenu)
+    	    {
+    	    case 1:
+    	        getInt("\nIngrese 1 para ordenar ascendentemente y 2 para ordenar descendentemente: ", &opcionMenu2);
+    	        while(opcionMenu2 != 1 && opcionMenu2 != 2)
+    	        {
+    	            getInt("\nERROR: La opcion ingresada no es correcta, ingrese 1 para ordenar ascendentemente y 2 para ordenar descendentemente: ", &opcionMenu2);
+    	        }
+    	        switch(opcionMenu2)
+    	        {
+    	        case 1:
+    	            printf("\nSe esta ordenando la lista, esto puede tardar unos minutos...\n");
+    	            retornoSort = ll_sort(pArrayListEmployee, employee_CompareById, 1);
+    	            if(retornoSort == 0)
+    	            {
+    	               printf("\n***** LISTA ORDENADA SATISFACTORIAMENTE *****\n");
+    	               retorno = 1;
+    	            }
+    	            else
+    	            {
+    	                printf("\nERROR: No se pudo ordenar la lista.\n");
+    	                retorno = -1;
+    	            }
+    	            break;
+    	        case 2:
+    	            printf("\nSe esta ordenando la lista, esto puede tardar unos minutos...\n");
+    	            retornoSort = ll_sort(pArrayListEmployee, employee_CompareById, 0);
+    	            if(retornoSort == 0)
+    	            {
+    	               printf("\n***** LISTA ORDENADA SATISFACTORIAMENTE *****\n");
+    	               retorno = 1;
+    	            }
+    	            else
+    	            {
+    	                printf("\nERROR: No se pudo ordenar la lista.\n");
+    	                retorno = -1;
+    	            }
+    	            break;
+    	        }
+    	        break;
+
+    	    case 2:
+    	    	getInt("\nIngrese 1 para ordenar ascendentemente y 2 para ordenar descendentemente: ", &opcionMenu2);
+    	    	 while(opcionMenu2 != 1 && opcionMenu2 != 2)
+    	    	 {
+    	    	   getInt("\nERROR: La opcion ingresada no es correcta, ingrese 1 para ordenar ascendentemente y 2 para ordenar descendentemente: ", &opcionMenu2);
+    	    	  }
+    	    	switch(opcionMenu2)
+    	    	{
+    	    	  case 1:
+    	    		  printf("\nSe esta ordenando la lista, esto puede tardar unos minutos...\n");
+    	    		  retornoSort = ll_sort(pArrayListEmployee, employee_CompareByName, 1);
+    	    		  if(retornoSort == 0)
+    	    		  {
+    	    		    printf("\n***** LISTA ORDENADA SATISFACTORIAMENTE *****\n");
+    	    		    retorno = 1;
+    	    		  }
+    	    		  else
+    	    		  {
+    	    		    printf("\nERROR: No se pudo ordenar la lista.\n");
+    	    		    retorno = -1;
+    	    		  }
+				      break;
+    	    	  case 2:
+    	    		  printf("\nSe esta ordenando la lista, esto puede tardar unos minutos...\n");
+    	    		  retornoSort = ll_sort(pArrayListEmployee, employee_CompareByName, 0);
+    	    		  if(retornoSort == 0)
+    	    		  {
+    	    		    printf("\n***** LISTA ORDENADA SATISFACTORIAMENTE *****\n");
+    	    		    retorno = 1;
+    	    		  }
+    	    		  else
+    	    		  {
+    	    		    printf("\nERROR: No se pudo ordenar la lista.\n");
+    	    		    retorno = -1;
+    	    		  }
+    	    		  break;
+    	    	}
+    	    }
+    }
+    else
+    {
+    	printf("\nERROR: No hay suficientes empleados cargados para ordenar."
+    			"\nDebe haber como minimo dos empleados para poder ordenar.");
     }
 
-    switch(opcionMenu)
-    {
-    case 1:
-        getInt("\nIngrese 1 para ordenar ascendentemente y 2 para ordenar descendentemente: ", &opcionMenu2);
-        while(opcionMenu2 != 1 && opcionMenu2 != 2)
-        {
-            getInt("\nERROR: La opcion ingresada no es correcta, ingrese 1 para ordenar ascendentemente y 2 para ordenar descendentemente: ", &opcionMenu2);
-        }
-        switch(opcionMenu2)
-        {
-        case 1:
-            printf("\nSe esta ordenando la lista, esto puede tardar unos minutos...\n");
-            retornoSort = ll_sort(pArrayListEmployee, employee_CompareById, 1);
-            if(retornoSort == 0)
-            {
-               printf("\n***** LISTA ORDENADA SATISFACTORIAMENTE *****\n");
-               retorno = 1;
-            }
-            else
-            {
-                printf("\nERROR: No se pudo ordenar la lista.\n");
-                retorno = -1;
-            }
-            break;
-        case 2:
-            printf("\nSe esta ordenando la lista, esto puede tardar unos minutos...\n");
-            retornoSort = ll_sort(pArrayListEmployee, employee_CompareById, 0);
-            if(retornoSort == 0)
-            {
-               printf("\n***** LISTA ORDENADA SATISFACTORIAMENTE *****\n");
-               retorno = 1;
-            }
-            else
-            {
-                printf("\nERROR: No se pudo ordenar la lista.\n");
-                retorno = -1;
-            }
-            break;
-        }
-        break;
-
-    case 2:
-        printf("\nSe esta ordenando la lista, esto puede tardar unos minutos...\n");
-        retornoSort = ll_sort(pArrayListEmployee, employee_CompareByName, 1);
-        if(retornoSort == 0)
-            {
-               printf("\n***** LISTA ORDENADA SATISFACTORIAMENTE *****\n");
-               retorno = 1;
-            }
-            else
-            {
-                printf("\nERROR: No se pudo ordenar la lista.\n");
-                retorno = -1;
-            }
-        break;
-    }
     return retorno;
 }
 
