@@ -27,17 +27,6 @@ int main()
 {
 	setbuf(stdout, NULL);
 
-	FILE* pFile;
-
-	pFile = fopen("config.csv", "w");
-
-	if(pFile!=NULL)
-	{
-		fprintf(pFile, "%d", 1000);
-	}
-
-	fclose(pFile);
-
     int option = 0;
     int validarSalir = 0;
 
