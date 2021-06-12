@@ -5,7 +5,6 @@
 #include "Controller.h"
 #include "Employee.h"
 #include "Seoane.h"
-#define T 10
 
 /****************************************************
     Menu:
