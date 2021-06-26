@@ -26,6 +26,8 @@
 
 int main(void)
 {
+	setbuf(stdout, NULL);
+
 	startTesting(1);  // ll_newLinkedList
     startTesting(2);  // ll_len
   	startTesting(3);  // getNode - test_getNode
